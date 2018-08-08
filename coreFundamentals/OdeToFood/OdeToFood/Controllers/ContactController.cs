@@ -12,9 +12,9 @@ namespace OdeToFood.Controllers
    
     public class ContactController : Controller
     {
-        private IContact _contactData;
+        private IFoodContact _contactData;
 
-        public ContactController(IContact contactData)
+        public ContactController(IFoodContact contactData)
         {
             _contactData = contactData;
         }
@@ -26,5 +26,41 @@ namespace OdeToFood.Controllers
             model.Contacts = _contactData.getAll();
             return View(model);
         }
+
+        public IActionResult Details(int Id)
+        {
+            var model = _contactData.get(Id);
+            if(model == null)
+            {
+                return RedirectToAction(nameof(Contacts));
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        public IActionResult Create(ContactEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var newContact = new FoodContact();
+                newContact.Name = model.Name;
+                newContact.Street = model.Street;
+                newContact.Phone = model.Phone;
+                newContact.City = model.City;
+                newContact = _contactData.Add(newContact);
+                return RedirectToAction(nameof(Details), new { id = newContact.Id });
+            }
+            else
+            {
+                return View();
+            }
+            
+        }
+
     }
 }

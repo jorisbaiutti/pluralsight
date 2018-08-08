@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Azure.KeyVault.Models;
 using OdeToFood.Models;
 
 namespace OdeToFood.Services
 {
-    public class InMemoryContactData : IContact
+    public class InMemoryContactData : IFoodContact
     {
         List<FoodContact> _contacts;
 
@@ -19,6 +17,16 @@ namespace OdeToFood.Services
                 new Models.FoodContact { Name = "Jacqueline Marmet", Street = "Melchtalstrasse 18", City =  "Bern", Phone =  "0799234439"},
                 new Models.FoodContact { Name = "Test user", Street = "Bernstrasse 30", City =  "Zürich", Phone =  "0799123123999"}
             };
+        }
+
+        public FoodContact Add(FoodContact foodContact)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FoodContact get(int id)
+        {
+            return _contacts.FirstOrDefault(c => c.Id == id);
         }
 
         public IEnumerable<FoodContact> getAll()
