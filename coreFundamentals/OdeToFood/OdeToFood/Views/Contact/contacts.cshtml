@@ -1,10 +1,5 @@
 ﻿@model OdeToFood.ViewModels.ContactViewModel
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-</head>
-<body>
     @foreach (var foodContact in Model.Contacts)
     {
         <div>Name: @foodContact.Name</div>
@@ -13,5 +8,3 @@
         <div>Phone: @foodContact.Phone</div>
     }
     <a asp-action="Create">Add Contact</a>
-</body>
-</html>
