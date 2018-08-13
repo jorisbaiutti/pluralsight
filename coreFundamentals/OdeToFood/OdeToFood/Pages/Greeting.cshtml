@@ -1,16 +1,5 @@
 ﻿@page
-@{
-    Layout = null;
-}
+@using OdeToFood.Pages
+@Model GreetingModel
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Greeting</title>
-</head>
-<body>
-    <div>@DateTime.Now.Year</div>
-</body>
-</html>
+<div>@Model.CurrentGreeting</div>

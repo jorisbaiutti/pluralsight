@@ -36,5 +36,10 @@ namespace OdeToFood.Services
             _restaurants.Add(restaurant);
             return restaurant;
         }
+
+        public Restaurant Update(Restaurant restaurant)
+        {
+            return restaurant;
+        }
     }
 }
