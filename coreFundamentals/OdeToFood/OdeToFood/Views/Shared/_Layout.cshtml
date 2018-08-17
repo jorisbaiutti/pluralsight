@@ -7,6 +7,16 @@
     <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">OdeToFood</a>
+            </div>
+            <div class="navbar-right">
+                <vc:login-logout></vc:login-logout>
+            </div>
+        </div>
+    </nav>
     <div>
         @RenderBody()
     </div>
@@ -14,15 +24,15 @@
         @DateTime.Now.Year
     </div>
     <footer>
-        @RenderSection("footer", required:false)
+        @RenderSection("footer", required: false)
         <vc:greeter></vc:greeter>
         @if (User.Identity.IsAuthenticated)
         {
-            foreach(var identity in User.Identities)
+            foreach (var identity in User.Identities)
             {
                 <h3>@identity.Name</h3>
                 <ul>
-                    @foreach(var claim in identity.Claims)
+                    @foreach (var claim in identity.Claims)
                     {
                         <li>@claim.Type - @claim.Value</li>
                     }
@@ -37,5 +47,13 @@
 
         }
     </footer>
+    <environment include="Development">
+        <script src="~/node_modules/jquery/dist/jquery.js"></script>
+        <script src="~/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/node_modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"></script>
+    </environment>
+    <environment exclude="Development">
+
+    </environment>
 </body>
 </html>
