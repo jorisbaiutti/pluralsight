@@ -1,0 +1,62 @@
+#All Cities
+GET http://localhost:60928/api/cities
+Content-Type: application/json
+
+###
+#One City
+
+GET http://localhost:60928/api/cities/2
+Content-Type: application/json
+
+
+###
+#PointsOfInterests
+
+GET http://localhost:60928/api/cities/7/pointsofinterest
+Content-Type: application/json
+
+###
+#Single Point Of Interest
+
+GET http://localhost:60928/api/cities/2/pointsofinterest/2
+Content-Type: application/json
+
+###
+#Create Point Of Interest
+POST http://localhost:60928/api/cities/2/pointsofinterest
+Content-Type: application/json
+
+{
+    "name": "Barbiere",
+    "description": "Auch Bar in Breitenrain"
+}
+
+###
+#Update Point Of Interest
+PUT http://localhost:60928/api/cities/2/pointsofinterest/3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Barbiere 2",
+    "description": "Auch Bar in Breitenrain"
+}
+
+###
+#Patch Point Of Interest
+
+PATCH http://localhost:60928/api/cities/2/pointsofinterest/3
+Content-Type: application/json
+
+[
+    {
+        "op": "replace",
+        "path": "/name",
+        "value": "updated Name for Barbiere"
+    }
+]
+
+###
+#Delete Point Of Interest
+
+DELETE http://localhost:60928/api/cities/2/pointsofinterest/2
+Content-Type: application/json
